@@ -1,0 +1,44 @@
+.card {
+    cursor: pointer;
+    overflow: hidden;
+    height: 450px;
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+
+    .card-img-top {
+        height: 50%;
+        object-fit: cover;
+    }
+
+    .card-body {
+        overflow: hidden;
+        background-color: $primary;
+        box-shadow: inset 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+        color: white;
+        font-size: 12px;
+
+        h3 {
+            white-space: nowrap;
+        }
+
+        .row {
+            overflow: hidden;
+            height: 90%;
+            
+            .col {
+                max-height: 100%;
+
+                .card-description {
+                    height: 100%;
+                    -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent);
+                    mask-image: linear-gradient(180deg, #000 60%, transparent);
+                }
+            }
+        }
+    }
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}
