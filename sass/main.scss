@@ -1,5 +1,17 @@
 // Customize variables
-@import "variables_overrides.scss";
+@import "utils/variables_overrides.scss";
 
 // Bootstrap
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+// Base
+@import "base/base.scss";
+
+// Pages
+@import "pages/index.scss";
+
+// Components
+@import "components/brand.scss";
+@import "components/search-form.scss";
+@import "components/filter.scss";
+@import "components/card.scss";
