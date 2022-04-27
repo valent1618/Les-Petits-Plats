@@ -1,0 +1,102 @@
+.filter {
+    z-index: 5;
+    max-width: 10rem;
+
+    &[data-filter="ingredients"] {
+        background-color: $ingredient;
+    }
+    &[data-filter="appliances"] {
+        background-color: $appliance;
+    }
+    &[data-filter="ustensils"] {
+        background-color: $ustensil;
+    }
+
+    form {
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+    
+        .form-control, .form-control:focus {
+            background: transparent;
+            border: none;
+            color: white;
+        }
+    
+        .form-control {
+            cursor: pointer;
+            transition: 0.2s;
+            padding-right: 3em;
+            font-weight: bold;
+        
+            &:focus {
+                box-shadow: unset;
+            }
+        }
+    
+        &::after {
+            transition: 0.2s;
+            content: "";
+            position: absolute;
+            right: 1.5rem;
+            width: 12px;
+            height: 12px;
+            border: solid;
+            border-width: 3px 3px 0 0;
+            border-color: white;
+            transform-origin: 100% 50%;
+            transform: rotate(135deg);
+        }
+    }
+
+    ul {
+        overflow-y: scroll;
+        transition: 0.2s, opacity 0s, max-height 0s;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0 2rem;
+        opacity: 0;
+        max-height: 0;
+        max-width: 0;
+        padding: 0rem;
+
+        li {
+            cursor: pointer;
+            list-style: none;
+            width: 10rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            border-radius: 5px;
+            padding: 5px;
+            margin: -3px;
+
+            &:hover {
+                background-color: rgba(208, 79, 79, 0.2);
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    &[data-expanded="true"] {
+        max-width: 40rem;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+
+        form::after {
+            transform: rotate(-45deg);
+        }
+
+        ul {
+            transition: opacity 0.2s 0.2s, max-height 0.2s 0.2s;
+            opacity: 1;
+            max-height: 20rem;
+            max-width: 40rem;
+            padding: 0.75rem;
+            padding-top: 0;
+        }
+    }
+
+    &:hover {
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    }
+}
