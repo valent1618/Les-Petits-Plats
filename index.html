@@ -14,7 +14,7 @@
   </head>
   <body>
     <header>
-      <nav class="navbar navbar-light justify-content-center py-4">
+      <nav class="navbar navbar-light justify-content-center pt-4">
         <div class="navbar-brand text-center m-0 mt-3">
           <img src="assets/logo.png" alt="" class="w-25" />
           <h1 class="text-primary">Les petits plats</h1>
@@ -22,10 +22,84 @@
       </nav>
     </header>
     <main>
-      <section>
-        <div class="container"></div>
+      <section id="filter">
+        <div class="container">
+          <form
+            class="position-relative d-flex align-items-center"
+            role="search"
+            autocomplete="off"
+          >
+            <input
+              class="form-control bg-light p-3 fs-5"
+              type="text"
+              id="search-recipe"
+              name="recipe"
+              placeholder="Rechercher une recette"
+              minlength="3"
+            />
+            <button type="submit" class="btn position-absolute end-0 fs-3">
+              <i class="bi bi-search"></i>
+            </button>
+          </form>
+          <div class="py-4">
+            <div class="position-absolute d-flex align-items-start gap-3 fs-5">
+              <div
+                class="rounded text-white filter"
+                data-filter="ingredients"
+                data-expanded="false"
+              >
+                <form class="form-floating" autocomplete="off">
+                  <input
+                    type="text"
+                    class="form-control fs-5 filter-input"
+                    id="ingredients"
+                    placeholder="Rechercher un ingrédient"
+                  />
+                  <label for="ingredients">Ingredients</label>
+                </form>
+                <ul class="list-group"></ul>
+              </div>
+              <div
+                class="rounded text-white filter"
+                data-filter="appliances"
+                data-expanded="false"
+              >
+                <form class="form-floating" autocomplete="off">
+                  <input
+                    type="text"
+                    class="form-control fs-5 filter-input"
+                    id="appareils"
+                    placeholder="Rechercher un appareil"
+                  />
+                  <label for="appareils">Appareils</label>
+                </form>
+                <ul class="list-group"></ul>
+              </div>
+              <div
+                class="rounded text-white filter"
+                data-filter="ustensils"
+                data-expanded="false"
+              >
+                <form class="form-floating" autocomplete="off">
+                  <input
+                    type="text"
+                    class="form-control fs-5 filter-input"
+                    id="ustensils"
+                    placeholder="Rechercher un ustensiles"
+                  />
+                  <label for="ustensils">Ustensiles</label>
+                </form>
+                <ul class="list-group"></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="recipes" class="my-5 pt-3">
+        <div class="container gap-5 recipes-container"></div>
       </section>
     </main>
     <footer></footer>
+    <script src="scripts/init.js" type="module"></script>
   </body>
 </html>
