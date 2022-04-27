@@ -79,7 +79,7 @@
     }
 
     &[data-expanded="true"] {
-        max-width: 40rem;
+        max-width: 35rem;
         box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 
         form::after {
@@ -90,7 +90,7 @@
             transition: opacity 0.2s 0.2s, max-height 0.2s 0.2s;
             opacity: 1;
             max-height: 20rem;
-            max-width: 40rem;
+            max-width: 35rem;
             padding: 0.75rem;
             padding-top: 0;
         }
