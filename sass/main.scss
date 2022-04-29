@@ -6,6 +6,7 @@
 
 // Base
 @import "base/base.scss";
+@import "base/animations.scss";
 
 // Pages
 @import "pages/index.scss";
@@ -13,5 +14,6 @@
 // Components
 @import "components/brand.scss";
 @import "components/search-form.scss";
-@import "components/filter.scss";
-@import "components/card.scss";
+@import "components/tags.scss";
+@import "components/filters.scss";
+@import "components/cards.scss";
