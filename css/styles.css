@@ -11137,12 +11137,32 @@ textarea.form-control-lg {
   background-color: rgba(208, 79, 79, 0.5);
 }
 
+@keyframes bounceAppear {
+  0% {
+    transform: scale(0) rotate(0);
+  }
+  50% {
+    transform: scale(1.15) rotate(-2deg);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  85% {
+    transform: scale(1.1);
+  }
+  95% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 .recipes-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
-.brand:hover img {
+.brand:hover img, .brand:focus img {
   transform: translate(-10px, -10px) rotate(-15deg);
 }
 
@@ -11151,6 +11171,30 @@ textarea.form-control-lg {
 }
 .search-form:hover {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.tag {
+  transition: 0.2s;
+  border: none;
+  animation: bounceAppear 0.5s;
+}
+.tag p {
+  white-space: nowrap;
+}
+.tag[data-tagtype=ingredients] {
+  background-color: #3282F7;
+}
+.tag[data-tagtype=appliances] {
+  background-color: #68D9A4;
+}
+.tag[data-tagtype=ustensils] {
+  background-color: #ED6454;
+}
+.tag[data-remove=false]:hover {
+  transform: scale(1.1) rotate(-2deg);
+}
+.tag[data-remove=true] {
+  transform: scale(0);
 }
 
 .filter {
@@ -11210,6 +11254,7 @@ textarea.form-control-lg {
   padding: 0rem;
 }
 .filter ul li {
+  display: none;
   cursor: pointer;
   list-style: none;
   width: 10rem;
@@ -11240,6 +11285,9 @@ textarea.form-control-lg {
   padding-top: 0.2rem;
   -webkit-mask-image: linear-gradient(180deg, transparent, #000 5%, #000 95%, transparent);
   mask-image: linear-gradient(180deg, transparent, #000 5%, #000 95%, transparent);
+}
+.filter[data-expanded=true] ul li {
+  display: block;
 }
 .filter:hover {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
