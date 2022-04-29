@@ -6,7 +6,8 @@ export function fillRecipesContainer() {
     recipes.forEach((recipe) => {
         // Create card
         const card = document.createElement("div");
-        card.className = "card";
+        card.className = "card recipe";
+        card.setAttribute("data-remove", "false");
         
         // Create img
         const img = document.createElement("img");
@@ -44,23 +45,28 @@ export function fillRecipesContainer() {
         const infoContainer = document.createElement("div");
         infoContainer.className = "row py-4";
     
-        // Create col1
-        const col1 = document.createElement("col");
-        col1.className = "col";
+        // Create list container
+        const listContainer = document.createElement("div");
+        listContainer.className = "col";
+
+        // Create list of ingredients
+        const list = document.createElement("ul");
+        list.className = "ingredient-list";
         
         recipe.ingredients.forEach((ingredient) => {
-            // Create text
-            const text = document.createElement("p");
-            text.className = "mb-0";
+            // Create ingredient
+            const ingredientItem = document.createElement("li");
+            ingredientItem.className = "ingredient";
+            ingredientItem.setAttribute("data-name", ingredient.ingredient);
     
             // Create name ingredient
             const nameIngr = document.createElement("span");
-            nameIngr.className = "fw-bold";
+            nameIngr.className = "fw-bold ingredient-name";
             nameIngr.textContent = ingredient.ingredient;
     
             if(ingredient.quantity) {
                 nameIngr.textContent += ": ";
-                text.textContent = ingredient.quantity;
+                ingredientItem.textContent = ingredient.quantity;
     
                 if(ingredient.unit) {
                     switch(ingredient.unit) {
@@ -69,24 +75,24 @@ export function fillRecipesContainer() {
                             break;
                         case "cuillères à soupe":
                         case "cuillère à soupe":
-                            ingredient.unit = " cuillères"
+                            ingredient.quantity > 1 ? ingredient.unit = " cuillères" : ingredient.unit = " cuillère";
                             break;
                         default:
                             if(ingredient.unit.length > 3) {
                                 ingredient.unit = ` ${ingredient.unit}`
                             }
                     }
-                    text.textContent += ingredient.unit;
+                    ingredientItem.textContent += ingredient.unit;
                 }
             }
     
-            text.prepend(nameIngr);
-            col1.appendChild(text);
+            ingredientItem.prepend(nameIngr);
+            list.appendChild(ingredientItem);
         })
     
-        // Create col2
-        const col2 = document.createElement("col");
-        col2.className = "col";
+        // Create description container
+        const descriptionContainer = document.createElement("div");
+        descriptionContainer.className = "col";
     
         // Create description
         const description = document.createElement("p");
@@ -95,8 +101,9 @@ export function fillRecipesContainer() {
     
     
         // Nest elements
-        col2.appendChild(description);
-        infoContainer.append(col1, col2);
+        listContainer.appendChild(list);
+        descriptionContainer.appendChild(description);
+        infoContainer.append(listContainer, descriptionContainer);
         timeContainer.append(timeIcon, time);
         titleContainer.append(nameRecipe, timeContainer);
         cardBody.append(titleContainer, infoContainer);

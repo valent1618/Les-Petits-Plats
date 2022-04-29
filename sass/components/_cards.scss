@@ -1,4 +1,5 @@
 .card {
+    transition: 0.2s, opacity 0.4s;
     cursor: pointer;
     overflow: hidden;
     height: 450px;
@@ -26,6 +27,12 @@
             overflow: hidden;
             height: 90%;
             
+            .ingredient-list {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
+
             .col {
                 max-height: 100%;
 
@@ -36,6 +43,10 @@
                 }
             }
         }
+    }
+
+    &[data-remove="true"]{
+        opacity: 0;
     }
 
     &:hover {
