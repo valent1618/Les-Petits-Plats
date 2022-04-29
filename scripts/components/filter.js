@@ -1,7 +1,4 @@
-import { createTag } from "../factory/tag.js";
-
 const filters = document.querySelectorAll(".filter");
-const tagsContainer = document.querySelector(".tags-container");
 
 export function listeningFilter() {
     document.addEventListener("click", (e) => {
@@ -9,19 +6,22 @@ export function listeningFilter() {
             filters.forEach((filter) => {
                 if(filter.getAttribute("data-expanded") === "true") {
                     filter.setAttribute("data-expanded", "false");
+                    filter.querySelector("input").value = "";
+                    filter.querySelector("input").dispatchEvent(new Event("input"));
                 }
             })
         }
     })
-
     document.addEventListener("keydown", (e) => {
         if(e.code === "Escape") {
             document.body.click();
+            document.getElementById("search-recipe").focus();
         }
     })
 
     filters.forEach((filter) => {
         const input = filter.querySelector("input");
+        const options = filter.querySelectorAll(".filter-option");
 
         filter.addEventListener("click", (e) => {
             if(!e.target.classList.contains("filter-option")){
@@ -30,36 +30,18 @@ export function listeningFilter() {
         })
 
         input.addEventListener("focus", () => {
-            filters.forEach((filter) => {
-                if(filter.getAttribute("data-expanded") === "true") {
-                    filter.setAttribute("data-expanded", "false");
-                }
-            })
+            document.body.click();
             filter.setAttribute("data-expanded", "true");
         })
-    })
 
-
-    // Options
-    const options = document.querySelectorAll(".filter-option");
-
-    options.forEach((option) => {
-        option.addEventListener("click", () => {
-            if(!tagsContainer.classList.contains("pt-4")) {
-                tagsContainer.classList.add("pt-4");
-            }
-            tagsContainer.prepend(createTag(option.textContent, option.parentElement.parentElement.getAttribute("data-filter")));
-            tagsContainer.children[0].addEventListener("click", (e) => {
-                e.target.closest(".tag").setAttribute("data-remove", "true");
-                setTimeout(() => {
-                    tagsContainer.removeChild(e.target.closest(".tag"));
-                    if(tagsContainer.childElementCount === 0) {
-                        tagsContainer.classList.remove("pt-4");
-                    }
-                }, 200);
-                option.style.display = "block";
+        input.addEventListener("input", (e) => {
+            options.forEach((option) => {
+                if(!option.textContent.toLowerCase().includes(e.target.value.toLowerCase())) {
+                    option.style.display = "none";
+                } else {
+                    option.style.display = "block"
+                }
             })
-            option.style.display = "none";
-        });
+        })
     })
 }
