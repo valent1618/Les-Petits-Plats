@@ -11142,16 +11142,10 @@ textarea.form-control-lg {
     transform: scale(0) rotate(0);
   }
   50% {
-    transform: scale(1.15) rotate(-2deg);
+    transform: scale(1.2) rotate(-3deg);
   }
-  70% {
+  75% {
     transform: scale(0.9);
-  }
-  85% {
-    transform: scale(1.1);
-  }
-  95% {
-    transform: scale(0.95);
   }
   100% {
     transform: scale(1);
@@ -11191,7 +11185,7 @@ textarea.form-control-lg {
   background-color: #ED6454;
 }
 .tag[data-remove=false]:hover {
-  transform: scale(1.1) rotate(-2deg);
+  transform: scale(1.1) rotate(-3deg);
 }
 .tag[data-remove=true] {
   transform: scale(0);
@@ -11294,6 +11288,7 @@ textarea.form-control-lg {
 }
 
 .card {
+  transition: 0.2s, opacity 0.4s;
   cursor: pointer;
   overflow: hidden;
   height: 450px;
@@ -11319,6 +11314,11 @@ textarea.form-control-lg {
   overflow: hidden;
   height: 90%;
 }
+.card .card-body .row .ingredient-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
 .card .card-body .row .col {
   max-height: 100%;
 }
@@ -11326,6 +11326,9 @@ textarea.form-control-lg {
   height: 100%;
   -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent);
   mask-image: linear-gradient(180deg, #000 60%, transparent);
+}
+.card[data-remove=true] {
+  opacity: 0;
 }
 .card:hover {
   transform: scale(1.05);
