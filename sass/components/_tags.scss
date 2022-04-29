@@ -1,0 +1,29 @@
+.tag {
+    transition: 0.2s;
+    border: none;
+    animation: bounceAppear 0.5s;
+
+    p {
+        white-space: nowrap;
+    }
+    
+    &[data-tagtype="ingredients"] {
+        background-color: $ingredient;
+    }
+    
+    &[data-tagtype="appliances"] {
+        background-color: $appliance;
+    }
+    
+    &[data-tagtype="ustensils"] {
+        background-color: $ustensil;
+    }
+
+    &[data-remove="false"]:hover {
+        transform: scale(1.1) rotate(-2deg);
+    }
+    
+    &[data-remove="true"] {
+        transform: scale(0);
+    }
+}
