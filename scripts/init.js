@@ -1,12 +1,13 @@
-import { fillFilterList } from "./factory/filterList.js";
-import { listeningFilter } from "./components/filter.js";
 import { fillRecipesContainer } from "./factory/recipeCard.js";
+import { handleFilterList } from "./utils/handleFilterList.js";
+import { listeningFilter } from "./components/filter.js";
 import { handleTags } from "./components/tags.js";
 
 // Factory
-fillFilterList();
 fillRecipesContainer();
 
 // Events
 listeningFilter();
-handleTags();
+
+// Handle filters and tags
+handleFilterList().then(() => handleTags());
