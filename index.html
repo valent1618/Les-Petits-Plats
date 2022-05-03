@@ -28,9 +28,11 @@
         <div class="container">
           <!-- Search bar -->
           <form
+            novalidate
             class="position-relative rounded d-flex align-items-center search-form"
             role="search"
             autocomplete="off"
+            data-error-visible="false"
           >
             <input
               class="form-control bg-light p-3 fs-5"
@@ -40,7 +42,7 @@
               placeholder="Rechercher une recette"
               minlength="3"
             />
-            <button type="submit" class="btn position-absolute end-0 fs-3">
+            <button type="button" class="btn position-absolute end-0 fs-3">
               <i class="bi bi-search"></i>
             </button>
           </form>
@@ -57,7 +59,11 @@
                 data-filter="ingredients"
                 data-expanded="false"
               >
-                <form class="form-floating filter-form" autocomplete="off">
+                <form
+                  novalidate
+                  class="form-floating filter-form"
+                  autocomplete="off"
+                >
                   <input
                     type="text"
                     class="form-control fs-5 filter-input"
@@ -74,7 +80,11 @@
                 data-filter="appliances"
                 data-expanded="false"
               >
-                <form class="form-floating filter-form" autocomplete="off">
+                <form
+                  novalidate
+                  class="form-floating filter-form"
+                  autocomplete="off"
+                >
                   <input
                     type="text"
                     class="form-control fs-5 filter-input"
@@ -91,7 +101,11 @@
                 data-filter="ustensils"
                 data-expanded="false"
               >
-                <form class="form-floating filter-form" autocomplete="off">
+                <form
+                  novalidate
+                  class="form-floating filter-form"
+                  autocomplete="off"
+                >
                   <input
                     type="text"
                     class="form-control fs-5 filter-input"
