@@ -1,6 +1,5 @@
 import { createTag } from "../factory/tag.js";
 import { handleRecipeByTags } from "../utils/handleRecipe.js";
-import { handleFilterList } from "../utils/handleFilterList.js";
 
 const tagsContainer = document.querySelector(".tags-container");
 

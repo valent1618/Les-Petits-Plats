@@ -1,6 +1,6 @@
 import { recipes } from "../../data/recipes.js";
 import { formatData } from "./formatData.js";
-import { handleFilterList } from "./handleFilterList.js";
+import { handleFilterList } from "../components/filter.js";
 
 export function handleRecipeByTags() {
   const tags = document.querySelectorAll(".tag");
