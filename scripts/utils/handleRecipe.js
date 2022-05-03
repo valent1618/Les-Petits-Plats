@@ -5,6 +5,8 @@ export function handleRecipeByTags() {
   const tags = document.querySelectorAll(".tag");
   const recipesCard = document.querySelectorAll(".recipe");
 
+  // Handle the recipes depend of the present tag
+  // and return promise when is done
   return new Promise((res) => {
     recipesCard.forEach((recipeCard, i) => {
       let remove = false;
@@ -13,6 +15,7 @@ export function handleRecipeByTags() {
         const tagName = tag.querySelector("p").textContent;
         let include = false;
 
+        // Try to find if the recipe contain the tag name
         switch (tag.getAttribute("data-tagtype")) {
           case "ingredients":
             recipes[i].ingredients.forEach((ingredient) => {
@@ -35,26 +38,34 @@ export function handleRecipeByTags() {
             break;
         }
 
+        // If it's not, remove the recipe
         if (!include) {
           remove = true;
         }
       });
 
+      // Make disappear the recipe
       recipeCard.setAttribute("data-remove", "true");
 
       setTimeout(() => {
+        // and remove it
         recipeCard.style.display = "none";
         if (!remove) {
+          // If we have to keep the recipe
+          // display it
           recipeCard.style.display = "flex";
           setTimeout(() => {
+            // make appear
             recipeCard.setAttribute("data-remove", "false");
           });
         }
+        // and resolve if it's the last recipe
+        setTimeout(() => {
+          if (i === recipesCard.length - 1) {
+            res();
+          }
+        });
       }, 400);
     });
-
-    setTimeout(() => {
-      res();
-    }, 500);
   });
 }

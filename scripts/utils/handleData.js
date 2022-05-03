@@ -9,7 +9,7 @@ export function handleData() {
   let appliances = [];
   let ustensils = [];
 
-  // For each recipe display fill the arrays
+  // For each recipe display fill the arrays with format data
   recipesDOM.forEach((recipe, i) => {
     if (recipe.getAttribute("data-remove") === "false") {
       // ingredients
@@ -32,7 +32,7 @@ export function handleData() {
   appliances = sortFilterData(appliances);
   ustensils = sortFilterData(ustensils);
 
-  // Remove tags select of the list
+  // Remove tags select of the list options
   if (tags.length > 0) {
     tags.forEach((tag) => {
       ingredients = ingredients.filter(
