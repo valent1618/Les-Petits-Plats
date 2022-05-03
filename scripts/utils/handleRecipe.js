@@ -2,7 +2,58 @@ import { recipes } from "../../data/recipes.js";
 import { formatData } from "./formatData.js";
 import { handleFilterList } from "../components/filter.js";
 
+export function handleRecipeBySearch(search) {
+  const recipesCard = document.querySelectorAll(".recipe");
+
+  recipesCard.forEach((recipeCard, i) => {
+    if (recipeCard.getAttribute("data-remove") === "false") {
+      let remove = false;
+
+      let title = recipeCard
+        .querySelector("h2")
+        .textContent.normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase();
+
+      let description = recipeCard
+        .querySelector(".card-description")
+        .textContent.normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase();
+
+      let ingredients = [];
+      recipes[i].ingredients.forEach((ingredient) => {
+        ingredients.push(
+          ingredient.ingredient
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .toLowerCase()
+        );
+      });
+
+      if (!title.includes(search) && !description.includes(search)) {
+        let include = false;
+        ingredients.forEach((ingredient) => {
+          if (ingredient.includes(search)) {
+            include = true;
+          }
+        });
+        if (!include) {
+          remove = true;
+        }
+      }
+
+      if (remove) {
+        recipeCard.style.display = "none";
+      } else {
+        recipeCard.removeAttribute("style");
+      }
+    }
+  });
+}
+
 export function handleRecipeByTags() {
+  const inputSearch = document.getElementById("search-recipe");
   const tags = document.querySelectorAll(".tag");
   const recipesCard = document.querySelectorAll(".recipe");
 
@@ -49,6 +100,8 @@ export function handleRecipeByTags() {
       recipeCard.setAttribute("data-remove", "false");
     }
   });
+
+  handleRecipeBySearch(inputSearch.value);
 
   // Handle options in the filter lists
   handleFilterList();
