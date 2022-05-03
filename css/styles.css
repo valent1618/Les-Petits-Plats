@@ -11225,6 +11225,7 @@ textarea.form-control-lg {
 }
 .filter form::after {
   transition: 0.2s;
+  cursor: pointer;
   content: "";
   position: absolute;
   right: 1.5rem;
