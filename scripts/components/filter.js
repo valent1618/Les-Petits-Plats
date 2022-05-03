@@ -63,6 +63,17 @@ export function listeningFilter() {
   });
 }
 
+export function listeningOptions() {
+  const options = document.querySelectorAll(".filter-option");
+
+  options.forEach((option) => {
+    // Add tag when option is clicked
+    option.addEventListener("click", () => {
+      handleTags(option);
+    });
+  });
+}
+
 export function handleFilterList() {
   const { ingredients, appliances, ustensils } = handleData();
 
@@ -92,6 +103,6 @@ export function handleFilterList() {
     });
   });
 
-  // Relaunch event on the new options for handle tags
-  handleTags();
+  // Relaunch event on the new options
+  listeningOptions();
 }
