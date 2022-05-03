@@ -23,20 +23,22 @@ export function listeningFilter() {
 
   filters.forEach((filter) => {
     const input = filter.querySelector("input");
-
-    // Focus the input when a filter is selected
-    filter.addEventListener("click", (e) => {
-      // Except if an option is clicked
-      if (!e.target.classList.contains("filter-option")) {
-        input.focus();
-      }
-    });
+    const filterForm = filter.querySelector(".filter-form");
 
     input.addEventListener("focus", () => {
       // Click on the body for collapse all the filter
       document.body.click();
       // and expand the good one
       filter.setAttribute("data-expanded", "true");
+    });
+
+    // Allow the arrow (form::after) to become clickable
+    filterForm.addEventListener("click", (e) => {
+      if (e.target === filterForm) {
+        filter.getAttribute("data-expanded") === "true"
+          ? document.body.click()
+          : input.focus();
+      }
     });
 
     // Handle the input for filter the options
