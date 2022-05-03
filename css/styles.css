@@ -11163,6 +11163,18 @@ textarea.form-control-lg {
 .search-form input {
   border: none;
 }
+.search-form::after {
+  transition: 0.2s;
+  content: "Veuillez saisir au moins 3 caractères";
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  bottom: -2rem;
+  color: #D04F4F;
+}
+.search-form[data-error-visible=true]::after {
+  opacity: 1;
+}
 .search-form:hover {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
