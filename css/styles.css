@@ -11282,16 +11282,7 @@ textarea.form-control-lg {
   padding-top: 0.2rem;
 }
 .filter[data-expanded=true] ul li {
-  transition: 0.4s;
   display: block;
-  max-height: 3rem;
-  max-width: 10rem;
-  opacity: 1;
-}
-.filter[data-expanded=true] ul li[data-remove=true] {
-  max-height: 0;
-  max-width: 0;
-  opacity: 0;
 }
 .filter:hover {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
@@ -11338,7 +11329,7 @@ textarea.form-control-lg {
   mask-image: linear-gradient(180deg, #000 60%, transparent);
 }
 .card[data-remove=true] {
-  opacity: 0;
+  display: none;
 }
 .card:hover {
   transform: scale(1.05);

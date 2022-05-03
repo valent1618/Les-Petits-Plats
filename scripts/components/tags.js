@@ -21,17 +21,8 @@ export function handleTags() {
       const optionName = option.textContent;
       tagsContainer.prepend(createTag(optionName, optionType));
 
-      // Make disapear all the options
-      options.forEach((option) => {
-        option.setAttribute("data-remove", "true");
-      });
-
       // Handle the recipes
-      // then handle the options
-      // and relaunch the event for handle tags
-      handleRecipeByTags()
-        .then(() => handleFilterList())
-        .then(() => handleTags());
+      handleRecipeByTags();
 
       // Remove tag when the tag created above is clicked
       tagsContainer.children[0].addEventListener("click", (e) => {
@@ -46,11 +37,7 @@ export function handleTags() {
             tagsContainer.classList.remove("pt-4");
           }
           // Handle the recipes
-          // then handle the options
-          // and relaunch the event for handle tags
-          handleRecipeByTags()
-            .then(() => handleFilterList())
-            .then(() => handleTags());
+          handleRecipeByTags();
         }, 200);
       });
     });

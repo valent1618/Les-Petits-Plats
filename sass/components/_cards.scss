@@ -46,7 +46,7 @@
     }
 
     &[data-remove="true"]{
-        opacity: 0;
+        display: none;
     }
 
     &:hover {
