@@ -11185,7 +11185,7 @@ textarea.form-control-lg {
   background-color: #ED6454;
 }
 .tag[data-remove=false]:hover {
-  transform: scale(1.1) rotate(-3deg);
+  transform: scale(0.9);
 }
 .tag[data-remove=true] {
   transform: scale(0);
