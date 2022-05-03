@@ -11283,9 +11283,13 @@ textarea.form-control-lg {
 .filter[data-expanded=true] ul li {
   transition: 0.4s;
   display: block;
+  max-height: 3rem;
+  max-width: 10rem;
   opacity: 1;
 }
 .filter[data-expanded=true] ul li[data-remove=true] {
+  max-height: 0;
+  max-width: 0;
   opacity: 0;
 }
 .filter:hover {
