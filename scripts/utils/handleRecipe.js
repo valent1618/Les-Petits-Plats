@@ -11,7 +11,7 @@ export function handleRecipeByTags() {
     let remove = false;
 
     tags.forEach((tag) => {
-      const tagName = tag.querySelector("p").textContent;
+      const tagName = tag.querySelector("p").textContent.toLowerCase();
       let include = false;
 
       // Try to find if the recipe contain the tag name
