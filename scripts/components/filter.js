@@ -78,7 +78,7 @@ export function handleFilterList() {
   const { ingredients, appliances, ustensils } = handleData();
 
   // Fill filters depend of the recipes display
-  filters.forEach((filter, i) => {
+  filters.forEach((filter) => {
     const list = filter.querySelector(".list-group");
 
     // Datas depend of the filter type
