@@ -5,10 +5,7 @@ const input = document.getElementById("search-recipe");
 
 export function listeningSearchBar() {
   input.addEventListener("input", (e) => {
-    let search = e.target.value
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .toLowerCase();
+    let search = e.target.value;
 
     if (search.length > 2 || search.length === 0) {
       handleRecipeBySearch(search);
