@@ -5,30 +5,21 @@ import { handleFilterList } from "../components/filter.js";
 export function handleRecipeBySearch(search) {
   const recipesCard = document.querySelectorAll(".recipe");
 
+  search = formatData(search);
+
   recipesCard.forEach((recipeCard, i) => {
     if (recipeCard.getAttribute("data-remove") === "false") {
       let remove = false;
 
-      let title = recipeCard
-        .querySelector("h2")
-        .textContent.normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .toLowerCase();
+      let title = formatData(recipeCard.querySelector("h2").textContent);
 
-      let description = recipeCard
-        .querySelector(".card-description")
-        .textContent.normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .toLowerCase();
+      let description = formatData(
+        recipeCard.querySelector(".card-description").textContent
+      );
 
       let ingredients = [];
       recipes[i].ingredients.forEach((ingredient) => {
-        ingredients.push(
-          ingredient.ingredient
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "")
-            .toLowerCase()
-        );
+        ingredients.push(formatData(ingredient.ingredient));
       });
 
       if (!title.includes(search) && !description.includes(search)) {
@@ -50,6 +41,9 @@ export function handleRecipeBySearch(search) {
       }
     }
   });
+
+  // Handle options in the filter lists
+  handleFilterList();
 }
 
 export function handleRecipeByTags() {
@@ -62,7 +56,7 @@ export function handleRecipeByTags() {
     let remove = false;
 
     tags.forEach((tag) => {
-      const tagName = tag.querySelector("p").textContent;
+      const tagName = tag.querySelector("p").textContent.toLowerCase();
       let include = false;
 
       // Try to find if the recipe contain the tag name
