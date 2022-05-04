@@ -1,11 +1,14 @@
 // Functions for format data
-export function formatData(data) {
+export function formatData(data, inCase = "lower") {
   // Remove accent
   let formatData = data.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   // put all the string to lower case
   formatData = formatData.toLowerCase();
-  // then add uppercase to the first letter
-  formatData = formatData.charAt(0).toUpperCase() + formatData.slice(1);
+
+  // then add uppercase to the first letter if it's call
+  if (inCase === "upper") {
+    formatData = formatData.charAt(0).toUpperCase() + formatData.slice(1);
+  }
 
   return formatData;
 }
