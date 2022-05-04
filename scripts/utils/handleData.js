@@ -11,18 +11,21 @@ export function handleData() {
 
   // For each recipe display fill the arrays with format data
   recipesDOM.forEach((recipe, i) => {
-    if (recipe.getAttribute("data-remove") === "false") {
+    if (
+      recipe.getAttribute("data-remove") === "false" &&
+      !recipe.getAttribute("style")
+    ) {
       // ingredients
       recipes[i].ingredients.forEach((ingredient) => {
-        ingredients.push(formatData(ingredient.ingredient));
+        ingredients.push(formatData(ingredient.ingredient, "upper"));
       });
 
       // appliances
-      appliances.push(formatData(recipes[i].appliance));
+      appliances.push(formatData(recipes[i].appliance, "upper"));
 
       // ustensils
       recipes[i].ustensils.forEach((ustensil) => {
-        ustensils.push(formatData(ustensil));
+        ustensils.push(formatData(ustensil, "upper"));
       });
     }
   });
