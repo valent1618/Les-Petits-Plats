@@ -12,7 +12,7 @@ export function handleRecipeBySearch(search) {
   let allRemoved = true;
   for (let i = 0; i < recipesCard.length; i++) {
     if (recipesCard[i].getAttribute("data-remove") === "false") {
-      if (search.length > 0) {
+      if (search.length > 2) {
         let remove = false;
 
         let title = formatData(recipesCard[i].querySelector("h2").textContent);
@@ -156,9 +156,7 @@ export function handleRecipeByTags() {
     }
   });
 
-  if (inputSearch.value.length > 2) {
-    handleRecipeBySearch(inputSearch.value);
-  }
+  handleRecipeBySearch(inputSearch.value);
 
   // Handle options in the filter lists
   handleFilterList();
