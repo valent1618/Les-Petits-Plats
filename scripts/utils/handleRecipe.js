@@ -15,12 +15,10 @@ export function handleRecipeBySearch(search) {
       if (search.length > 2) {
         let remove = false;
 
-        let title = formatData(recipesCard[i].querySelector("h2").textContent);
+        let title = formatData(recipes[i].name);
         titles.push(title);
 
-        let description = formatData(
-          recipesCard[i].querySelector(".card-description").textContent
-        );
+        let description = formatData(recipes[i].description);
 
         let ingredients = [];
         for (let j = 0; j < recipes[i].ingredients.length; j++) {
