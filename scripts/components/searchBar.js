@@ -7,8 +7,9 @@ export function listeningSearchBar() {
   input.addEventListener("input", (e) => {
     let search = e.target.value;
 
+    handleRecipeBySearch(search);
+
     if (search.length > 2 || search.length === 0) {
-      handleRecipeBySearch(search);
       form.setAttribute("data-error-visible", "false");
     } else {
       form.setAttribute("data-error-visible", "true");
