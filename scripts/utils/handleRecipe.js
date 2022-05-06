@@ -1,5 +1,6 @@
 import { recipes } from "../../data/recipes.js";
 import { formatData } from "./formatData.js";
+import { handleNoRecipeMessage } from "../components/noRecipeMessage.js";
 import { handleFilterList } from "../components/filter.js";
 
 export function handleRecipeBySearch(search) {
@@ -7,40 +8,53 @@ export function handleRecipeBySearch(search) {
 
   search = formatData(search);
 
+  let titles = [];
+  let allRemoved = true;
   recipesCard.forEach((recipeCard, i) => {
     if (recipeCard.getAttribute("data-remove") === "false") {
-      let remove = false;
+      if (search.length > 2) {
+        let remove = false;
 
-      let title = formatData(recipeCard.querySelector("h2").textContent);
+        let title = formatData(recipeCard.querySelector("h2").textContent);
+        titles.push(title);
 
-      let description = formatData(
-        recipeCard.querySelector(".card-description").textContent
-      );
+        let description = formatData(
+          recipeCard.querySelector(".card-description").textContent
+        );
 
-      let ingredients = [];
-      recipes[i].ingredients.forEach((ingredient) => {
-        ingredients.push(formatData(ingredient.ingredient));
-      });
-
-      if (!title.includes(search) && !description.includes(search)) {
-        let include = false;
-        ingredients.forEach((ingredient) => {
-          if (ingredient.includes(search)) {
-            include = true;
-          }
+        let ingredients = [];
+        recipes[i].ingredients.forEach((ingredient) => {
+          ingredients.push(formatData(ingredient.ingredient));
         });
-        if (!include) {
-          remove = true;
-        }
-      }
 
-      if (remove) {
-        recipeCard.style.display = "none";
+        // Test if search is include
+        if (!title.includes(search) && !description.includes(search)) {
+          let include = false;
+          ingredients.forEach((ingredient) => {
+            if (ingredient.includes(search)) {
+              include = true;
+            }
+          });
+          if (!include) {
+            remove = true;
+          }
+        }
+
+        if (remove) {
+          recipeCard.style.display = "none";
+        } else {
+          allRemoved = false;
+          recipeCard.removeAttribute("style");
+        }
       } else {
-        recipeCard.removeAttribute("style");
+        allRemoved = false;
+        recipesCard[i].removeAttribute("style");
       }
     }
   });
+
+  // Display or not the message
+  handleNoRecipeMessage(allRemoved, titles);
 
   // Handle options in the filter lists
   handleFilterList();
