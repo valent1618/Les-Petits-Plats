@@ -2,7 +2,6 @@ const recipesContainer = document.querySelector(".recipes-container");
 const message = document.getElementById("no-recipe-message");
 
 export function handleNoRecipeMessage(allRemoved, titles) {
-  console.log(allRemoved);
   if (allRemoved) {
     recipesContainer.setAttribute("data-no-recipe", "true");
     message.textContent =
