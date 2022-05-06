@@ -11155,6 +11155,21 @@ textarea.form-control-lg {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
+.recipes-container #no-recipe-message {
+  display: none;
+  width: 80%;
+  text-align: center;
+  color: #D04F4F;
+}
+.recipes-container[data-no-recipe=true] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+.recipes-container[data-no-recipe=true] #no-recipe-message {
+  display: block;
+}
 
 .brand:hover img, .brand:focus img {
   transform: translate(-10px, -10px) rotate(-15deg);
