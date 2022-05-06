@@ -1,4 +1,22 @@
 .recipes-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+    #no-recipe-message {
+        display: none;
+        width: 80%;
+        text-align: center;
+        color: $primary;
+    }
+
+    &[data-no-recipe="true"] {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50vh;
+
+        #no-recipe-message {
+            display: block;
+        }
+    }
 }
