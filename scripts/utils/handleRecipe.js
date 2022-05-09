@@ -46,7 +46,7 @@ export function handleRecipeBySearch(search) {
         }
       } else {
         allRemoved = false;
-        recipesCard[i].removeAttribute("style");
+        recipeCard.removeAttribute("style");
       }
     }
   });
