@@ -24,7 +24,7 @@
       </nav>
     </header>
     <main>
-      <section id="filter">
+      <div id="filter">
         <div class="container">
           <!-- Search bar -->
           <form
@@ -119,13 +119,15 @@
             </div>
           </div>
         </div>
-      </section>
-      <section id="recipes" class="my-5 pt-3">
+      </div>
+      <div id="recipes" class="my-5 pt-3">
         <!-- Recipes container -->
         <div class="container gap-5 recipes-container" data-no-recipe="false">
-          <h2 id="no-recipe-message"></h2>
+          <h2 id="no-recipe-message">
+            Aucune recette ne correspond à vos critères...
+          </h2>
         </div>
-      </section>
+      </div>
     </main>
     <footer></footer>
     <script src="scripts/init.js" type="module"></script>
